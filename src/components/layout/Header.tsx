@@ -35,22 +35,22 @@ const Header: React.FC = () => {
 
   const socialLinks = [
     { 
-      icon: <Github className="h-5 w-5" />, 
-      href: 'https://github.com/baveshraam', 
+      icon: <Github className="h-6 w-6" />,
+      href: 'https://github.com/baveshraams', 
       label: 'GitHub' 
     },
     { 
-      icon: <Linkedin className="h-5 w-5" />, 
-      href: 'https://www.linkedin.com/in/bavesh-raam-s-0a589528b/', 
+      icon: <Linkedin className="h-6 w-6" />,
+      href: 'https://linkedin.com/in/baveshraams', 
       label: 'LinkedIn' 
     },
     { 
-      icon: <Mail className="h-5 w-5" />, 
+      icon: <Mail className="h-6 w-6" />,
       href: 'mailto:baveshraamsv@gmail.com', 
       label: 'Email' 
     },
     { 
-      icon: <FileText className="h-5 w-5" />, 
+      icon: <FileText className="h-6 w-6" />,
       href: '/Bavesh_Raam_S.pdf', 
       label: 'Resume', 
       download: true 
@@ -65,36 +65,34 @@ const Header: React.FC = () => {
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 py-6"> {/* Increased py-4 to py-6 */}
+      <div className="container mx-auto px-4 sm:px-6 py-8">
         <div className="flex items-center justify-between">
           <Link 
             to="/" 
-            className="text-2xl font-bold text-slate-900 dark:text-white flex items-center" // Changed text-xl to text-2xl, added flex
+            className="text-3xl font-bold text-slate-900 dark:text-white flex items-center"
           >
             <span>Bavesh</span>
-            <span className="ml-2 text-blue-600 dark:text-blue-500">Raam</span> {/* Added ml-2 for spacing */}
+            <span className="ml-2 text-blue-600 dark:text-blue-500">Raam</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-2"> {/* Increased space-x-1 to space-x-2 */}
+          <nav className="hidden md:flex items-center space-x-4">
             {navigationLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className={`px-4 py-2 rounded-md text-base font-medium transition-colors ${
+                className={`px-4 py-2 rounded-md text-lg font-medium transition-colors ${
                   location.pathname === link.path
                     ? 'text-blue-600 dark:text-blue-500'
                     : 'text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-500'
-                }`} // Changed text-sm to text-base
+                }`}
               >
                 {link.name}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center space-x-3"> {/* Increased space-x-2 to space-x-3 */}
-            {/* Social Links - Desktop */}
-            <div className="hidden md:flex items-center space-x-2"> {/* Increased space-x-1 to space-x-2 */}
+          <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-3">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
@@ -112,19 +110,17 @@ const Header: React.FC = () => {
             
             <ThemeToggle />
             
-            {/* Mobile Menu Button */}
             <button
               className="md:hidden p-2 rounded-md text-slate-700 dark:text-slate-300"
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -132,17 +128,17 @@ const Header: React.FC = () => {
           exit={{ opacity: 0, y: -20 }}
           className="md:hidden bg-white dark:bg-slate-900 shadow-lg"
         >
-          <div className="container mx-auto px-4 py-6"> {/* Increased py-4 to py-6 */}
+          <div className="container mx-auto px-4 py-8">
             <nav className="flex flex-col space-y-2">
               {navigationLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`px-4 py-3 rounded-md text-base font-medium transition-colors ${
+                  className={`px-4 py-4 rounded-md text-lg font-medium transition-colors ${
                     location.pathname === link.path
                       ? 'bg-blue-50 text-blue-600 dark:bg-slate-800 dark:text-blue-500'
                       : 'text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800'
-                  }`} // Changed text-sm to text-base
+                  }`}
                   onClick={closeMenu}
                 >
                   {link.name}
