@@ -1,41 +1,11 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
-import Button from '../ui/Button';
+import { Github, Linkedin, Mail, MapPin, Briefcase } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-      
-      // Reset status after 5 seconds
-      setTimeout(() => setSubmitStatus('idle'), 5000);
-    }, 1500);
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -76,6 +46,13 @@ const Contact: React.FC = () => {
     },
   ];
 
+  const availability = [
+    'Full-Time Engineering Roles',
+    'AI/ML Infrastructure Projects',
+    'Research & Development Collaborations',
+    'Open Source & Enterprise Consulting',
+  ];
+
   return (
     <section className="py-24 md:py-32 scroll-mt-20" id="contact">
       <div className="container mx-auto px-4 sm:px-6">
@@ -97,96 +74,36 @@ const Contact: React.FC = () => {
             <motion.div variants={itemVariants}>
               <div className="bg-white rounded-lg shadow-sm border border-clay/80 p-8">
                 <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
-                
-                <form onSubmit={handleSubmit}>
-                  <div className="mb-4">
-                    <label 
-                      htmlFor="name" 
-                      className="block text-sm font-medium text-ink/70 mb-2"
-                    >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 rounded-md border border-clay/80 bg-white text-ink focus:outline-none focus:ring-2 focus:ring-moss/40"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  
-                  <div className="mb-4">
-                    <label 
-                      htmlFor="email" 
-                      className="block text-sm font-medium text-ink/70 mb-2"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 rounded-md border border-clay/80 bg-white text-ink focus:outline-none focus:ring-2 focus:ring-moss/40"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                  
-                  <div className="mb-6">
-                    <label 
-                      htmlFor="message" 
-                      className="block text-sm font-medium text-ink/70 mb-2"
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-2 rounded-md border border-clay/80 bg-white text-ink focus:outline-none focus:ring-2 focus:ring-moss/40 resize-none"
-                      placeholder="Your message..."
-                    />
-                  </div>
-                  
-                  <div>
-                    <Button
-                      type="submit"
-                      variant="primary"
-                      size="lg"
-                      className="w-full"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                    </Button>
-                    
-                    {submitStatus === 'success' && (
-                      <p className="mt-4 text-moss text-sm">
-                        Your message has been sent successfully!
-                      </p>
-                    )}
-                    
-                    {submitStatus === 'error' && (
-                      <p className="mt-4 text-red-700 text-sm">
-                        An error occurred. Please try again later.
-                      </p>
-                    )}
-                  </div>
-                </form>
+                <p className="mb-6 text-ink/70">
+                  Reach out directly through any of the links below. That&apos;s the real contact path.
+                </p>
+
+                <div className="space-y-5">
+                  {socialLinks.map((link, index) => (
+                    <div key={index} className="flex items-start">
+                      <div className="text-pine mr-4 flex-shrink-0 mt-1">
+                        {link.icon}
+                      </div>
+                      <div>
+                        <a
+                          href={link.href}
+                          target={link.href.startsWith('http') ? '_blank' : undefined}
+                          rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          className="font-semibold hover:text-pine transition-colors"
+                          aria-label={link.ariaLabel}
+                        >
+                          {link.label}
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
             
             <motion.div variants={itemVariants}>
               <div className="bg-white rounded-lg shadow-sm border border-clay/80 p-8 h-full">
                 <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                
                 <div className="space-y-6">
                   <div className="flex items-start">
                     <MapPin className="h-6 w-6 text-pine mr-4 mt-1 flex-shrink-0" />
@@ -198,46 +115,33 @@ const Contact: React.FC = () => {
                     </div>
                   </div>
                   
-                  {socialLinks.map((link, index) => (
-                    <div key={index} className="flex items-start">
-                      <div className="text-pine mr-4 flex-shrink-0">
-                        {link.icon}
-                      </div>
-                      <div>
-                        <a
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-semibold hover:text-pine transition-colors"
-                          aria-label={link.ariaLabel}
-                        >
-                          {link.label}
-                        </a>
-                      </div>
+                  <div className="flex items-start">
+                    <Mail className="h-6 w-6 text-pine mr-4 mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold mb-1">Email</h4>
+                      <a
+                        href="mailto:baveshraamsv@gmail.com"
+                        className="font-semibold hover:text-pine transition-colors"
+                      >
+                        baveshraamsv@gmail.com
+                      </a>
                     </div>
-                  ))}
-                </div>
-                
-                <div className="mt-12">
-                  <h4 className="font-semibold mb-4">Available For:</h4>
-                  <ul className="space-y-2 text-ink/70">
-                    <li className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-moss mr-2"></div>
-                      Full-Time Engineering Roles
-                    </li>
-                    <li className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-moss mr-2"></div>
-                      AI/ML Infrastructure Projects
-                    </li>
-                    <li className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-moss mr-2"></div>
-                      Research & Development Collaborations
-                    </li>
-                    <li className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-moss mr-2"></div>
-                      Open Source & Enterprise Consulting
-                    </li>
-                  </ul>
+                  </div>
+
+                  <div className="flex items-start">
+                    <Briefcase className="h-6 w-6 text-pine mr-4 mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold mb-1">Available For</h4>
+                      <ul className="space-y-2 text-ink/70">
+                        {availability.map((item) => (
+                          <li key={item} className="flex items-center">
+                            <div className="w-2 h-2 rounded-full bg-moss mr-2"></div>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
