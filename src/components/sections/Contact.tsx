@@ -75,7 +75,7 @@ const Contact: React.FC = () => {
               <div className="bg-white rounded-lg shadow-sm border border-clay/80 p-8">
                 <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
                 <p className="mb-6 text-ink/70">
-                  Reach out directly through any of the links below. That&apos;s the real contact path.
+                  Reach out directly through any of the links below.
                 </p>
 
                 <div className="space-y-5">
