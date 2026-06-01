@@ -1,20 +1,26 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/app/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        primary: '#2563eb',
+        cream: '#f6f8fc',
+        clay: '#d9e2f2',
+        sage: '#dbeafe',
+        moss: '#0891b2',
+        pine: '#2563eb',
+        ink: '#111827',
+        mist: '#eef4ff',
+        ember: '#f59e0b',
+        coral: '#f43f5e',
+      },
       fontFamily: {
-        sans: [
-          'system-ui',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          'Segoe UI',
-          'Roboto',
-          'Helvetica Neue',
-          'Arial',
-          'sans-serif',
-        ],
+        sans: ['var(--font-sora)', ...fontFamily.sans],
+        serif: ['var(--font-lora)', ...fontFamily.serif],
       },
       keyframes: {
         fadeIn: {

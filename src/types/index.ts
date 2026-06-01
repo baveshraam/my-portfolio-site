@@ -5,6 +5,7 @@ export interface Project {
   fullDescription: string;
   technologies: string[];
   category: string[];
+  tags?: string[];
   role?: string;
   contributions?: string[];
   challenges?: string[];
@@ -15,6 +16,7 @@ export interface Project {
   demo?: string;
   externalLink?: string;
 }
+
 export interface Skill {
   category: string;
   items: string[];
@@ -33,6 +35,16 @@ export interface Experience {
   company: string;
   duration: string;
   responsibilities: string[];
+}
+
+export interface Profile {
+  fullName: string;
+  title: string;
+  heroBadge: string;
+  heroSummary: string;
+  aboutIntro: string[];
+  languages?: string[];
+  location?: string;
 }
 
 export type ThemeMode = 'light' | 'dark';

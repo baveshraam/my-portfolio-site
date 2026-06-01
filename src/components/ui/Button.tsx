@@ -19,12 +19,12 @@ const Button: React.FC<ButtonProps> = ({
   type = 'button',
   disabled = false,
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
+  const baseStyles = 'inline-flex items-center justify-center rounded-md font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pine/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:opacity-50 disabled:pointer-events-none';
   
   const variants = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600',
-    secondary: 'bg-purple-600 text-white hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600',
-    outline: 'border border-slate-300 bg-transparent hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-800',
+    primary: 'bg-gradient-to-r from-pine to-moss text-white shadow-sm shadow-pine/20 hover:shadow-md hover:shadow-pine/25 hover:-translate-y-0.5',
+    secondary: 'bg-ink text-white shadow-sm shadow-ink/15 hover:bg-ink/90 hover:-translate-y-0.5',
+    outline: 'border border-pine/25 text-pine bg-white/60 hover:bg-white hover:border-pine/50 hover:shadow-sm',
   };
   
   const sizes = {

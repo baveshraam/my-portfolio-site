@@ -1,7 +1,9 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Project } from '../../types';
 import Button from './Button';
 
@@ -10,65 +12,57 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const githubProfileUrl = 'https://github.com/baveshraam';
   return (
     <motion.div
       whileHover={{ y: -5 }}
-      className="overflow-hidden rounded-lg bg-white dark:bg-slate-800 shadow-md transition-all hover:shadow-xl"
+      className="group relative overflow-hidden rounded-lg border border-clay/80 bg-white/85 shadow-sm shadow-ink/5 backdrop-blur transition-all duration-300 hover:border-pine/25 hover:shadow-lg hover:shadow-pine/10"
     >
-      <div className="relative h-64 overflow-hidden">
-        {project.previewImage && (
-          <img
-            src={project.previewImage}
-            alt={project.title}
-            className="w-full h-full object-contain object-center transition-transform duration-300 hover:scale-105"
-          />
-        )}
-        <div className="absolute top-0 right-0 p-2 flex space-x-2">
+      <div className="p-5">
+        <div className="flex flex-wrap gap-2 mb-3">
           {project.category.map((cat) => (
             <span
               key={cat}
-              className="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100"
+              className="text-xs px-2 py-1 rounded-full border border-pine/15 bg-sage text-pine"
             >
               {cat}
             </span>
           ))}
         </div>
-      </div>
-      <div className="p-5">
-        <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">
+        <h3 className="text-xl font-bold mb-2 text-ink">
           {project.title}
         </h3>
-        <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+        <p className="text-sm text-ink/70 mb-4">
           {project.shortDescription}
         </p>
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.slice(0, 3).map((tech) => (
+          {project.technologies?.slice(0, 3).map((tech) => (
             <span
               key={tech}
-              className="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300"
+              className="text-xs px-2 py-1 rounded-full bg-mist text-ink/70 border border-clay/60"
             >
               {tech}
             </span>
           ))}
-          {project.technologies.length > 3 && (
-            <span className="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300">
-              +{project.technologies.length - 3} more
+          {project.technologies?.length > 3 && (
+            <span className="text-xs px-2 py-1 rounded-full bg-mist text-ink/70 border border-clay/60">
+              +{(project.technologies?.length || 0) - 3} more
             </span>
           )}
         </div>
         <div className="flex justify-between items-center">
-          <Link to={`/projects/${project.id}`}>
+          <Link href={`/projects/${project.id}`}>
             <Button variant="outline" size="sm">
               View Details
             </Button>
           </Link>
           <div className="flex space-x-2">
-            {project.github && (
+            {(project.github || githubProfileUrl) && (
               <a
-                href={project.github}
+                href={project.github || githubProfileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                className="p-2 rounded-full hover:bg-mist transition-colors text-ink/70 hover:text-pine"
                 aria-label="View GitHub repository"
               >
                 <Github className="h-5 w-5" />
@@ -79,7 +73,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                className="p-2 rounded-full hover:bg-mist transition-colors text-ink/70 hover:text-pine"
                 aria-label="View live demo"
               >
                 <ExternalLink className="h-5 w-5" />

@@ -1,9 +1,16 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import SkillCard from '../ui/SkillCard';
-import { skills } from '../../data/skills';
+import type { Skill } from '@/types';
 
-const Skills: React.FC = () => {
+interface SkillsProps {
+  skills: Skill[];
+}
+
+const Skills: React.FC<SkillsProps> = ({ skills }) => {
+  const skillsData = skills;
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -24,7 +31,7 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-800/50" id="skills">
+    <section className="py-24 md:py-32 bg-mist scroll-mt-20" id="skills">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial="hidden"
@@ -33,9 +40,9 @@ const Skills: React.FC = () => {
           variants={containerVariants}
         >
           <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills & Expertise</h2>
-            <div className="h-1 w-20 bg-blue-600 dark:bg-blue-500 mx-auto rounded-full"></div>
-            <p className="mt-4 max-w-2xl mx-auto text-slate-600 dark:text-slate-300">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">Skills & Expertise</h2>
+            <div className="h-1 w-20 bg-pine mx-auto rounded-full"></div>
+            <p className="mt-4 max-w-2xl mx-auto text-ink/70">
               A comprehensive list of my technical skills and areas of expertise.
             </p>
           </motion.div>
@@ -44,8 +51,8 @@ const Skills: React.FC = () => {
             variants={containerVariants}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {skills.map((skill, index) => (
-              <motion.div key={index} variants={itemVariants}>
+            {skillsData.map((skill) => (
+              <motion.div key={skill.category} variants={itemVariants}>
                 <SkillCard skill={skill} />
               </motion.div>
             ))}

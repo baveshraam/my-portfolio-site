@@ -1,4 +1,6 @@
 
+'use client';
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
@@ -62,8 +64,8 @@ const Contact: React.FC = () => {
     },
     { 
       icon: <Linkedin className="h-5 w-5" />, 
-      href: 'https://www.linkedin.com/in/bavesh-raam-s-0a589528b/', 
-      label: 'linkedin.com/in/baveshraam',
+      href: 'https://linkedin.com/in/bavesh-raam-s', 
+      label: 'linkedin.com/in/bavesh-raam-s',
       ariaLabel: 'LinkedIn' 
     },
     { 
@@ -75,7 +77,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24" id="contact">
+    <section className="py-24 md:py-32 scroll-mt-20" id="contact">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial="hidden"
@@ -84,23 +86,23 @@ const Contact: React.FC = () => {
           variants={containerVariants}
         >
           <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Me</h2>
-            <div className="h-1 w-20 bg-blue-600 dark:bg-blue-500 mx-auto rounded-full"></div>
-            <p className="mt-4 max-w-2xl mx-auto text-slate-600 dark:text-slate-300">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">Contact Me</h2>
+            <div className="h-1 w-20 bg-pine mx-auto rounded-full"></div>
+            <p className="mt-4 max-w-2xl mx-auto text-ink/70">
               Have a question or want to work together? Feel free to reach out!
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <motion.div variants={itemVariants}>
-              <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-8">
+              <div className="bg-white rounded-lg shadow-sm border border-clay/80 p-8">
                 <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
                 
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label 
                       htmlFor="name" 
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-ink/70 mb-2"
                     >
                       Name
                     </label>
@@ -111,7 +113,7 @@ const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-4 py-2 rounded-md border border-clay/80 bg-white text-ink focus:outline-none focus:ring-2 focus:ring-moss/40"
                       placeholder="Your name"
                     />
                   </div>
@@ -119,7 +121,7 @@ const Contact: React.FC = () => {
                   <div className="mb-4">
                     <label 
                       htmlFor="email" 
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-ink/70 mb-2"
                     >
                       Email
                     </label>
@@ -130,7 +132,7 @@ const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-4 py-2 rounded-md border border-clay/80 bg-white text-ink focus:outline-none focus:ring-2 focus:ring-moss/40"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -138,7 +140,7 @@ const Contact: React.FC = () => {
                   <div className="mb-6">
                     <label 
                       htmlFor="message" 
-                      className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                      className="block text-sm font-medium text-ink/70 mb-2"
                     >
                       Message
                     </label>
@@ -149,7 +151,7 @@ const Contact: React.FC = () => {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-2 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                      className="w-full px-4 py-2 rounded-md border border-clay/80 bg-white text-ink focus:outline-none focus:ring-2 focus:ring-moss/40 resize-none"
                       placeholder="Your message..."
                     />
                   </div>
@@ -166,13 +168,13 @@ const Contact: React.FC = () => {
                     </Button>
                     
                     {submitStatus === 'success' && (
-                      <p className="mt-4 text-green-600 dark:text-green-400 text-sm">
+                      <p className="mt-4 text-moss text-sm">
                         Your message has been sent successfully!
                       </p>
                     )}
                     
                     {submitStatus === 'error' && (
-                      <p className="mt-4 text-red-600 dark:text-red-400 text-sm">
+                      <p className="mt-4 text-red-700 text-sm">
                         An error occurred. Please try again later.
                       </p>
                     )}
@@ -182,23 +184,23 @@ const Contact: React.FC = () => {
             </motion.div>
             
             <motion.div variants={itemVariants}>
-              <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md p-8 h-full">
+              <div className="bg-white rounded-lg shadow-sm border border-clay/80 p-8 h-full">
                 <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
                 
                 <div className="space-y-6">
                   <div className="flex items-start">
-                    <MapPin className="h-6 w-6 text-blue-600 dark:text-blue-500 mr-4 mt-1 flex-shrink-0" />
+                    <MapPin className="h-6 w-6 text-pine mr-4 mt-1 flex-shrink-0" />
                     <div>
                       <h4 className="font-semibold mb-1">Location</h4>
-                      <p className="text-slate-600 dark:text-slate-300">
-                        Trichy, Tamil Nadu, India
+                      <p className="text-ink/70">
+                        Coimbatore, Tamil Nadu, India
                       </p>
                     </div>
                   </div>
                   
                   {socialLinks.map((link, index) => (
                     <div key={index} className="flex items-start">
-                      <div className="text-blue-600 dark:text-blue-500 mr-4 flex-shrink-0">
+                      <div className="text-pine mr-4 flex-shrink-0">
                         {link.icon}
                       </div>
                       <div>
@@ -206,7 +208,7 @@ const Contact: React.FC = () => {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-semibold hover:text-blue-600 dark:hover:text-blue-500 transition-colors"
+                          className="font-semibold hover:text-pine transition-colors"
                           aria-label={link.ariaLabel}
                         >
                           {link.label}
@@ -218,22 +220,22 @@ const Contact: React.FC = () => {
                 
                 <div className="mt-12">
                   <h4 className="font-semibold mb-4">Available For:</h4>
-                  <ul className="space-y-2 text-slate-700 dark:text-slate-300">
+                  <ul className="space-y-2 text-ink/70">
                     <li className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-green-500 mr-2"></div>
-                      Internship Opportunities
+                      <div className="w-2 h-2 rounded-full bg-moss mr-2"></div>
+                      Full-Time Engineering Roles
                     </li>
                     <li className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-green-500 mr-2"></div>
-                      Freelance Projects
+                      <div className="w-2 h-2 rounded-full bg-moss mr-2"></div>
+                      AI/ML Infrastructure Projects
                     </li>
                     <li className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-green-500 mr-2"></div>
-                      Research Collaborations
+                      <div className="w-2 h-2 rounded-full bg-moss mr-2"></div>
+                      Research & Development Collaborations
                     </li>
                     <li className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-green-500 mr-2"></div>
-                      Open Source Contributions
+                      <div className="w-2 h-2 rounded-full bg-moss mr-2"></div>
+                      Open Source & Enterprise Consulting
                     </li>
                   </ul>
                 </div>

@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	body {
+		@apply bg-cream text-ink antialiased;
+		background:
+			linear-gradient(rgba(37, 99, 235, 0.035) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(8, 145, 178, 0.035) 1px, transparent 1px),
+			linear-gradient(180deg, #f8fbff 0%, #f3f6fb 48%, #eef4ff 100%);
+		background-size: 56px 56px, 56px 56px, auto;
+	}
+
+	::selection {
+		@apply bg-pine text-white;
+	}
+}
