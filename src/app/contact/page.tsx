@@ -89,7 +89,7 @@ export default function ContactPage() {
                 ))}
               </ul>
               <p className="mt-8 text-ink/70">
-                Reach out through any of the links on the left. That&apos;s the direct way to get in touch.
+                
               </p>
             </div>
           </div>
